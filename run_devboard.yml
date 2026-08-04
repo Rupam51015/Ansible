@@ -1,0 +1,17 @@
+- name: Run Devboard App
+  hosts: dev
+  become: true
+
+  tasks:
+    - name: Clone Devboard from GitHub
+      git:
+        repo: 'https://github.com/Rupam51015/devboard.git'
+        dest: /home/ubuntu/devboard-app
+        single_branch: yes
+        version: main
+    - name: Copy .env file
+      shell: cp /home/ubuntu/devboard-app/.env.example /home/ubuntu/devboard-app/.env
+    - name: Run the app via docker compose
+      shell: 
+        cmd: docker compose up -d
+        chdir: /home/ubuntu/devboard-app/
