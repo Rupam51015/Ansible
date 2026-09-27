@@ -1,4 +1,9 @@
 ---
+- name: Update system
+  dnf:
+    name: "*"
+    state: latest
+    update_cache: true
 - name: Install Docker (Amazon Linux)
   dnf:
     name: docker

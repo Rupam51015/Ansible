@@ -1,0 +1,8 @@
+- name: Install Docker on all machines
+  hosts: servers
+  become: true
+  roles:
+    - role: docker
+      docker_users:
+        - ubuntu
+        - ec2-user
